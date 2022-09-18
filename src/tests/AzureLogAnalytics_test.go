@@ -8,12 +8,12 @@ import (
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
-func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
+func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 	t.Parallel()
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/examples/AzureResourceGroup.ts"},
+		Args:       []string{"synth", "--app", "npx ts-node ./src/examples/AzureLogAnalytics.ts"},
 		WorkingDir: "../../",
 	}
 
@@ -22,7 +22,7 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located
-		TerraformDir: "../../cdktf.out/stacks/testAzureResourceGroup",
+		TerraformDir: "../../cdktf.out/stacks/testAzureLogAnalytics",
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created

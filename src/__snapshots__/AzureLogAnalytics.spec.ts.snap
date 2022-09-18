@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AzureLogAnalytics-Snapshot renders a AzureLogAnalytics with tags 1`] = `
+"{
+  "output": {
+    "log_analytics_id": {
+      "value": "\${azurerm_log_analytics_workspace.testLA_log_analytics_D32C1799.id}"
+    },
+    "log_analytics_primary_shared_key": {
+      "sensitive": true,
+      "value": "\${azurerm_log_analytics_workspace.testLA_log_analytics_D32C1799.primary_shared_key}"
+    },
+    "log_analytics_resource_group": {
+      "value": "rg-test"
+    },
+    "log_analytics_workspace_id": {
+      "value": "\${azurerm_log_analytics_workspace.testLA_log_analytics_D32C1799.workspace_id}"
+    }
+  },
+  "resource": {
+    "azurerm_log_analytics_workspace": {
+      "testLA_log_analytics_D32C1799": {
+        "location": "eastus",
+        "name": "la-test",
+        "resource_group_name": "rg-test",
+        "retention_in_days": 90,
+        "sku": "PerGB2018",
+        "tags": {
+          "environment": "test"
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`AzureLogAnalytics-Snapshot renders a AzureLogAnalytics without tags 1`] = `
+"{
+  "output": {
+    "log_analytics_id": {
+      "value": "\${azurerm_log_analytics_workspace.testLA_log_analytics_D32C1799.id}"
+    },
+    "log_analytics_primary_shared_key": {
+      "sensitive": true,
+      "value": "\${azurerm_log_analytics_workspace.testLA_log_analytics_D32C1799.primary_shared_key}"
+    },
+    "log_analytics_resource_group": {
+      "value": "rg-test"
+    },
+    "log_analytics_workspace_id": {
+      "value": "\${azurerm_log_analytics_workspace.testLA_log_analytics_D32C1799.workspace_id}"
+    }
+  },
+  "resource": {
+    "azurerm_log_analytics_workspace": {
+      "testLA_log_analytics_D32C1799": {
+        "location": "eastus",
+        "name": "la-test",
+        "resource_group_name": "rg-test",
+        "retention_in_days": 90,
+        "sku": "PerGB2018"
+      }
+    }
+  }
+}"
+`;
