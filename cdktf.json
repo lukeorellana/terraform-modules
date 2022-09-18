@@ -1,6 +1,6 @@
 {
   "language": "typescript",
-  "app": "npx ts-node",
+  "app": "npx ts-node ./src/examples/AzureResourceGroup.ts",
   "terraformProviders": [],
   "projectId": "1b5f16bd-67ac-4af6-a33f-7bcafff141eb"
 }

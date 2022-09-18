@@ -3,7 +3,7 @@ import { App, TerraformStack} from "cdktf";
 import {AzurermProvider} from "@cdktf/provider-azurerm";
 
 const app = new App();
-const stack = new TerraformStack(app, "test");
+const stack = new TerraformStack(app, "testAzureResourceGroup");
     
 new AzurermProvider(stack, "azureFeature", {
     features: {},

@@ -1,10 +1,9 @@
 package test
 
 import (
-	"strings"
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/random"
+	"github.com/gruntwork-io/terratest/modules/shell"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
@@ -12,26 +11,18 @@ import (
 func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	t.Parallel()
 
-	var regions = []string{
-		"eastus",
+	cmd := shell.Command{
+		Command:    "cdktf",
+		Args:       []string{"synth", " -app", " npx", " ts-node", " ./src/examples/AzureResourceGroup.ts"},
+		WorkingDir: "../../",
 	}
 
-	// Pick a random Azure region to test in.
-	azureRegion := random.RandomString(regions)
-
-	// Randomize System Name
-	rndName := strings.ToLower(random.UniqueId()) + "appconfig"
+	shell.RunCommandAndGetStdOut(t, cmd)
 
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located
-		TerraformDir: "../examples/app_config",
-
-		// Variables to pass to our Terraform code using -var options
-		Vars: map[string]interface{}{
-			"name":     rndName,
-			"location": azureRegion,
-		},
+		TerraformDir: "../../cdktf.out/stacks/testAzureResourceGroup",
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
