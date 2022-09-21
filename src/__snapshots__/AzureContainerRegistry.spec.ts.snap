@@ -13,10 +13,11 @@ exports[`AzureContainerRegistry-Snapshot renders a AzureContainerRegistry with t
         "admin_enabled": false,
         "georeplications": [
           {
+            "location": "westus"
           }
         ],
         "location": "eastus",
-        "name": "acr-test",
+        "name": "acrtest888",
         "resource_group_name": "rg-test",
         "sku": "Premium",
         "tags": {
@@ -41,10 +42,11 @@ exports[`AzureContainerRegistry-Snapshot renders a AzureContainerRegistry withou
         "admin_enabled": false,
         "georeplications": [
           {
+            "location": "westus"
           }
         ],
         "location": "eastus",
-        "name": "acr-test",
+        "name": "acrtest888",
         "resource_group_name": "rg-test",
         "sku": "Premium"
       }

@@ -20,7 +20,7 @@ describe('AzureContainerRegistry-Snapshot', () => {
         resource_group_name: "rg-test",
         sku: "Premium",
         admin_enabled: false,
-        georeplication_locations: ["EastUS"],
+        georeplication_locations: [{location: "westus"}],
       });
     });
   
@@ -35,7 +35,7 @@ describe('AzureContainerRegistry-Snapshot', () => {
         resource_group_name: "rg-test",
         sku: "Premium",
         admin_enabled: false,
-        georeplication_locations: ["EastUS"],
+        georeplication_locations: [{location: "westus"}],
         tags: {
           environment: "test",
         },
@@ -62,7 +62,7 @@ describe("AzureContainerRegistry-Terraform", () => {
       resource_group_name: "rg-test",
       sku: "Premium",
       admin_enabled: false,
-      georeplication_locations: ["EastUS"],
+      georeplication_locations: [{location: "westus"}],
       tags: {
         environment: "test",
       },
@@ -87,7 +87,7 @@ describe("AzureContainerRegistry-Terraform", () => {
       resource_group_name: "rg-test",
       sku: "Premium",
       admin_enabled: false,
-      georeplication_locations: ["WestUS"],
+      georeplication_locations: [{location: "westus"}],
       tags: {
         environment: "test",
       },

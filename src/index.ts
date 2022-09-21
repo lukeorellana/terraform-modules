@@ -3,4 +3,5 @@
 export * from './AzureResourceGroup';
 export * from './AzureLogAnalytics';
 export * from './AzureApplicationInsights';
-export * from './AzureContainerRegistry'
+export * from './AzureContainerRegistry';
+export * from './AzureContainerApp';
