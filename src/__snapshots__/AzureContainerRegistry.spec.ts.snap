@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AzureContainerRegistry-Snapshot renders a AzureContainerRegistry and check snapshot 1`] = `
+"{
+}"
+`;
+
 exports[`AzureContainerRegistry-Snapshot renders a AzureContainerRegistry with tags 1`] = `
 "{
   "output": {

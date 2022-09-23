@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AzureResourceGroup-Snapshot renders a AzureResourceGroup and checks snapshot 1`] = `
+"{
+}"
+`;
+
 exports[`AzureResourceGroup-Snapshot renders a AzureResourceGroup with tags 1`] = `
 "{
   "output": {
@@ -22,7 +27,7 @@ exports[`AzureResourceGroup-Snapshot renders a AzureResourceGroup with tags 1`] 
             ]
           }
         ],
-        "location": "eastus",
+        "location": "westus",
         "name": "rg-test",
         "tags": {
           "description": "test environmnet",
@@ -56,7 +61,7 @@ exports[`AzureResourceGroup-Snapshot renders a AzureResourceGroup without tags 1
             ]
           }
         ],
-        "location": "eastus",
+        "location": "westus",
         "name": "rg-test"
       }
     }

@@ -1,37 +1,13 @@
 import { Testing, TerraformStack} from 'cdktf';
-import {AzurermProvider} from "@cdktf/provider-azurerm";
-import { AzureResourceGroup } from './AzureResourceGroup';
+import { exampleAzureResourceGroup} from './examples/ExampleAzureResourceGroup'
 import 'cdktf/lib/testing/adapters/jest';
 
 
-// test('renders a VPC with minimal config', () => {
-//   const synthed = Testing.synthScope((stack) => {
-//     new PocketVPC(stack, 'testPocketVPC');
-//   });
-
-
 describe('AzureResourceGroup-Snapshot', () => {
-  it('renders a AzureResourceGroup without tags', () => {
+  it('renders a AzureResourceGroup and checks snapshot', () => {
 
     const synthed = Testing.synthScope((stack) => {
-      new AzureResourceGroup(stack, 'testRG', {
-        name: 'rg-test',
-        location: 'eastus',
-      });
-    });
-    expect(synthed).toMatchSnapshot();
-  });
-
-  it('renders a AzureResourceGroup with tags', () => {
-    const synthed = Testing.synthScope((stack) => {
-      new AzureResourceGroup(stack, 'testRG', {
-        name: 'rg-test',
-        location: 'eastus',
-        tags: {
-          name: 'rug',
-          description: 'test environmnet',
-        },
-      });
+      new exampleAzureResourceGroup(stack, "testAzureResourceGroup");
     });
     expect(synthed).toMatchSnapshot();
   });
@@ -43,20 +19,9 @@ describe("AzureResourceGroup-Terraform", () => {
     const app = Testing.app();
     const stack = new TerraformStack(app, "test");
     
-    new AzurermProvider(stack, "azureFeature", {
-      features: {},
+    Testing.synthScope((stack) => {
+      new exampleAzureResourceGroup(stack, "testAzureResourceGroup");
     });
-
-
-    new AzureResourceGroup(stack, 'testRG', {
-      name: 'rg-test',
-      location: 'eastus',
-      tags: {
-        name: 'test',
-        Env: "NonProd",
-      },
-    });
-
 
     // We need to do a full synth to validate the terraform configuration
     expect(Testing.fullSynth(stack)).toBeValidTerraform();
@@ -66,19 +31,9 @@ describe("AzureResourceGroup-Terraform", () => {
     const app = Testing.app();
     const stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {
-      features: {},
+    Testing.synthScope((stack) => {
+      new exampleAzureResourceGroup(stack, "testAzureResourceGroup");
     });
-
-    new AzureResourceGroup(stack, 'testRG', {
-      name: 'rg-test',
-      location: 'eastus',
-      tags: {
-        name: 'test',
-        Env: "NonProd",
-      },
-    });
-
 
 
     // We need to do a full synth to plan the terraform configuration

@@ -4,21 +4,26 @@ exports[`AzureContainerApp-Snapshot renders a AzureContainerApp 1`] = `
 "{
   "resource": {
     "azapi_resource": {
-      "testACA_aca_15FAF6B7": {
-        "body": "\${jsonencode({\\n    properties: {\\n      managedEnvironmentId = \${azapi_resource.testACA_aca_env_CF086A3B.id}\\n      configuration = {\\n        ingress = {\\n          external = true\\n          targetPort = true?8080: null\\n        }\\n      }\\n      template = {\\n        containers = [\\n          {\\n            name = \\"main\\"\\n            image = \\"uzyexe/tetris:latest\\"\\n            resources = {\\n              cpu = 2\\n              memory = 1.0Gi\\n            }\\n          }         \\n        ]\\n        scale = {\\n          minReplicas = 1\\n          maxReplicas = 3\\n        }\\n      }\\n    }\\n  })}",
+      "container_app": {
+        "body": "\${jsonencode({identity = {type = \\"SystemAssigned\\"}, properties = {managedEnvironmentId = azapi_resource.testACA_managed_environment_109262E1.id, configuration = {registries = [{server = \\"testacr.azurecr.io\\", identity = \\"system\\"}], ingress = {external = true, targetPort = 8080}}, template = {containers = [{name = \\"test-container\\", image = \\"uzyexe/tetris:latest\\", resources = {cpu = 2, memory = \\"1Gi\\"}}], scale = {minReplicas = 1, maxReplicas = 3}}}})}",
         "location": "eastus",
         "name": "acrtest888",
         "parent_id": "rg-test",
         "type": "Microsoft.App/containerApps@2022-03-01"
       },
-      "testACA_aca_env_CF086A3B": {
-        "body": "\${jsonencode({\\n    properties = {\\n      appLogsConfiguration = {\\n        destination               = \\"log-analytics\\"\\n        logAnalyticsConfiguration = {\\n          customerId = loganalyticsid\\n          sharedKey  = loganalyticskey\\n        }\\n      }\\n    }\\n })}",
+      "testACA_managed_environment_109262E1": {
+        "body": "\${jsonencode({properties = {appLogsConfiguration = {destination = \\"log-analytics\\", logAnalyticsConfiguration = {customerId = \\"loganalyticsid\\", sharedKey = \\"loganalyticskey\\"}}}})}",
         "location": "eastus",
-        "name": "\${props.name}-env",
+        "name": "acrtest888-env",
         "parent_id": "rg-test",
         "type": "Microsoft.App/managedEnvironments@2022-03-01"
       }
     }
   }
+}"
+`;
+
+exports[`AzureContainerApp-Snapshot renders a AzureContainerApp and checks snapshot 1`] = `
+"{
 }"
 `;

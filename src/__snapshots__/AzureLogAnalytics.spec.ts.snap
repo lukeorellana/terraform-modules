@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AzureLogAnalytics-Snapshot renders a AzureLogAnalytics 1`] = `
+"{
+}"
+`;
+
 exports[`AzureLogAnalytics-Snapshot renders a AzureLogAnalytics with tags 1`] = `
 "{
   "output": {

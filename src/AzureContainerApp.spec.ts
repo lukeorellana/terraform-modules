@@ -1,37 +1,13 @@
-import { Testing, TerraformStack, testingMatchers} from 'cdktf';
-import {AzurermProvider} from "@cdktf/provider-azurerm";
-import { AzureContainerApp } from './AzureContainerApp';
-import {AzapiProvider} from "../.gen/providers/azapi"
+import { Testing, TerraformStack} from 'cdktf';
+import { exampleAzureContainerApp} from './examples/ExampleAzureContainerApp'
 import 'cdktf/lib/testing/adapters/jest';
 
 
-// test('renders a VPC with minimal config', () => {
-//   const synthed = Testing.synthScope((stack) => {
-//     new PocketVPC(stack, 'testPocketVPC');
-//   });
-
-
 describe('AzureContainerApp-Snapshot', () => {
-  it('renders a AzureContainerApp', () => {
+  it('renders a AzureContainerApp and checks snapshot', () => {
 
     const synthed = Testing.synthScope((stack) => {
-      new AzureContainerApp(stack, 'testACA', {
-        name: 'acrtest888',
-        location: 'eastus',
-        resource_group_id: "rg-test",
-        container_name: "test-container",
-        container_port: 8080,
-        cpu_requests: 2,
-        image: "uzyexe/tetris",
-        ingress_enabled: true,
-        max_replicas: 3,
-        mem_requests: "1Gi",
-        min_replicas: 1,
-        container_tag: "latest",
-        loganalytics_id: "loganalyticsid",
-        loganalytics_primary_key: "loganalyticskey",
-        acr_url: "testacr.azurecr.io"
-      });
+      new exampleAzureContainerApp(stack, "testAzureContainerApp");
     });
   
     expect(synthed).toMatchSnapshot();
@@ -44,33 +20,10 @@ describe("AzureContainerApps-Terraform", () => {
     const app = Testing.app();
     const stack = new TerraformStack(app, "test");
     
-    new AzurermProvider(stack, "azureFeature", {
-      features: {},
+    Testing.synthScope((stack) => {
+      new exampleAzureContainerApp(stack, "testAzureContainerApp");
     });
-
-    new AzapiProvider(stack, "azureAzapi", {
-    });
-
-
-    new AzureContainerApp(stack, 'testACA', {
-      name: 'acrtest888',
-      location: 'eastus',
-      resource_group_id: "rg-test",
-      container_name: "test-container",
-      container_port: 8080,
-      cpu_requests: 2,
-      image: "uzyexe/tetris",
-      ingress_enabled: true,
-      max_replicas: 3,
-      mem_requests: "1Gi",
-      min_replicas: 1,
-      container_tag: "latest",
-      loganalytics_id: "loganalyticsid",
-      loganalytics_primary_key: "loganalyticskey",
-      acr_url: "testacr.azurecr.io"
-    });
-
-
+  
     // We need to do a full synth to validate the terraform configuration
     expect(Testing.fullSynth(stack)).toBeValidTerraform();
   });
@@ -79,31 +32,10 @@ describe("AzureContainerApps-Terraform", () => {
     const app = Testing.app();
     const stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {
-      features: {},
+    Testing.synthScope((stack) => {
+      new exampleAzureContainerApp(stack, "testAzureContainerApp");
     });
-
-    new AzapiProvider(stack, "azureAzapi", {
-    });
-
-    new AzureContainerApp(stack, 'testACA', {
-      name: 'acrtest888',
-      location: 'eastus',
-      resource_group_id: "rg-test",
-      container_name: "test-container",
-      container_port: 8080,
-      cpu_requests: 2,
-      image: "uzyexe/tetris",
-      ingress_enabled: true,
-      max_replicas: 3,
-      mem_requests: "1Gi",
-      min_replicas: 1,
-      container_tag: "latest",
-      loganalytics_id: "loganalyticsid",
-      loganalytics_primary_key: "loganalyticskey",
-      acr_url: "testacr.azurecr.io"
-    });
-
+  
 
     // We need to do a full synth to plan the terraform configuration
     expect(Testing.fullSynth(stack)).toPlanSuccessfully();
