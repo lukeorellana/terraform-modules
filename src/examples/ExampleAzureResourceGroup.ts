@@ -1,6 +1,6 @@
 import { AzureResourceGroup } from '../AzureResourceGroup';
 import { App, TerraformStack} from "cdktf";
-import {AzurermProvider} from "@cdktf/provider-azurerm";
+import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 
 

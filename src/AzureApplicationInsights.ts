@@ -1,6 +1,6 @@
 import * as cdktf from "cdktf";
 import { Construct } from 'constructs';
-import {ApplicationInsights} from "@cdktf/provider-azurerm";
+import {ApplicationInsights} from "@cdktf/provider-azurerm/lib/application-insights";
 
 // Construct
 /**
@@ -54,7 +54,7 @@ export class AzureApplicationInsights extends Construct {
     super(scope, id);
 
     this.props = props;;
-
+    
     const azurermApplicationInsightsAppinsights = 
         new ApplicationInsights(this, "appinsights", {
             location: props.location,

@@ -1,10 +1,8 @@
 import * as cdktf from "cdktf";
 import { Construct } from 'constructs';
-import {LogAnalyticsWorkspace, 
-  LogAnalyticsDataExportRule,
-  LogAnalyticsSavedSearch
-} from "@cdktf/provider-azurerm";
-
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
+import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
 // Construct
 /**
  * Properties for the resource group

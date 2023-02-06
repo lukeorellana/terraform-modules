@@ -1,7 +1,7 @@
 import * as cdktf from "cdktf";
 import { Construct } from 'constructs';
-import {ResourceGroup, RoleAssignment} from "@cdktf/provider-azurerm";
-
+import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
+import {RoleAssignment} from "@cdktf/provider-azurerm/lib/role-assignment";
 // Construct
 /**
  * Properties for the resource group

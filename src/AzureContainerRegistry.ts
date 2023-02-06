@@ -1,6 +1,6 @@
 import * as cdktf from "cdktf";
 import { Construct } from 'constructs';
-import {ContainerRegistry} from "@cdktf/provider-azurerm";
+import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry";
 
 // Construct
 /**
