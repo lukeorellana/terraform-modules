@@ -1,4 +1,4 @@
-import { AzureApplicationInsights } from '../AzureApplicationInsights';
+import { AzureApplicationInsights } from '.';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";

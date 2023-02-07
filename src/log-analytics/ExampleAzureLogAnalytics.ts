@@ -1,15 +1,16 @@
-import { AzureContainerRegistry } from '../AzureContainerRegistry';
+import { AzureLogAnalytics } from '.';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 
+
+
 const app = new App();
-    
-export class exampleAzureContainerRegistry extends TerraformStack {
+export class exampleAzureLogAnalytics extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
-
+    
     new AzurermProvider(this, "azureFeature", {
         features: {},
       });
@@ -20,20 +21,16 @@ export class exampleAzureContainerRegistry extends TerraformStack {
 
     });
 
-    new AzureContainerRegistry(this, 'testACR', {
-      name: 'acrtest888',
-      location: rg.location,
-      resource_group_name: rg.name,
-      sku: "Premium",
-      admin_enabled: false,
-      georeplication_locations: [{location: "westus"}],
-      tags: {
-        environment: "test",
-      },
+    new AzureLogAnalytics(this, 'testLA', {
+      name: 'la-test',
+      location: 'eastus',
+      retention: 90,
+      sku: "PerGB2018",
+      resource_group_name: rg.name ,
     });
   }
 }
 
-new exampleAzureContainerRegistry(app, "testAzureContainerRegistry");
+new exampleAzureLogAnalytics(app, "testAzureLogAnalytics");
 
 app.synth();

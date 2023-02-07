@@ -1,26 +1,25 @@
 import { Testing, TerraformStack} from 'cdktf';
-import { exampleAzureResourceGroup} from './examples/ExampleAzureResourceGroup'
+import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
 
 
-describe('AzureResourceGroup-Snapshot', () => {
-  it('renders a AzureResourceGroup and checks snapshot', () => {
-
+describe('AzureLogAnalytics-Snapshot', () => {
+  it('renders a AzureLogAnalytics', () => {
     const synthed = Testing.synthScope((stack) => {
-      new exampleAzureResourceGroup(stack, "testAzureResourceGroup");
+      new exampleAzureLogAnalytics(stack, "testAzureLogAnalytics");
     });
     expect(synthed).toMatchSnapshot();
   });
 });
 
 
-describe("AzureResourceGroup-Terraform", () => {
+describe("AzureLogAnalytics-Terraform", () => {
   it("check if the produced terraform configuration is valid", () => {
     const app = Testing.app();
     const stack = new TerraformStack(app, "test");
     
     Testing.synthScope((stack) => {
-      new exampleAzureResourceGroup(stack, "testAzureResourceGroup");
+      new exampleAzureLogAnalytics(stack, "testAzureLogAnalytics");
     });
 
     // We need to do a full synth to validate the terraform configuration
@@ -32,9 +31,8 @@ describe("AzureResourceGroup-Terraform", () => {
     const stack = new TerraformStack(app, "test");
 
     Testing.synthScope((stack) => {
-      new exampleAzureResourceGroup(stack, "testAzureResourceGroup");
+      new exampleAzureLogAnalytics(stack, "testAzureLogAnalytics");
     });
-
 
     // We need to do a full synth to plan the terraform configuration
     expect(Testing.fullSynth(stack)).toPlanSuccessfully();
